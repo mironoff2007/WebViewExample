@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
-        binding.webView.webViewClient = CustomWebViewClient()
+        val webView = findViewById<View>(R.id.web_view) as WebView
+        webView.webViewClient = CustomWebViewClient()
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.loadUrl("http://www.google.com/")
     }
