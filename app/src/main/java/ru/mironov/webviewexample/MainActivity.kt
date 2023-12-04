@@ -3,7 +3,6 @@ package ru.mironov.webviewexample
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.webkit.*
 import androidx.appcompat.app.AppCompatActivity
@@ -15,18 +14,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        Log.d(LOG_TAG, "create activity")
         binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         initWebView()
     }
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
-        val webView = findViewById<View>(R.id.web_view) as WebView
-        webView.webViewClient = CustomWebViewClient()
+        binding.webView.webViewClient = CustomWebViewClient()
         binding.webView.settings.javaScriptEnabled = true
-        binding.webView.loadUrl("http://www.google.com/")
+        binding.webView.loadUrl("https://www.google.com/")
     }
 
     override fun onDestroy() {
